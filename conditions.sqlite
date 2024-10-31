@@ -1,0 +1,27 @@
+-- Create a table to store conditions
+CREATE TABLE IF NOT EXISTS ekg_conditions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    condition_name TEXT NOT NULL,
+    features TEXT,
+    correct_answer TEXT NOT NULL,
+    distractors TEXT,
+    explanation_template TEXT
+);
+
+-- Insert example data into the ekg_conditions table
+INSERT INTO ekg_conditions (condition_name, features, correct_answer, distractors, explanation_template)
+VALUES 
+    ("Atrial Fibrillation", "Irregular rhythm, Absent P-wave", "Atrial Fibrillation", 
+     "Atrial Flutter, Tachycardia, Bradycardia", 
+     "This diagnosis shows an irregular rhythm with absent P-waves, typical for atrial fibrillation."),
+
+    ("Atrial Flutter", "Sawtooth pattern, Regular rhythm", "Atrial Flutter", 
+     "Atrial Fibrillation, Tachycardia, Bradycardia", 
+     "Atrial flutter shows a sawtooth pattern, which is not present here."),
+
+    ("Tachycardia", "Rapid heart rate", "Tachycardia", 
+     "Bradycardia, Atrial Fibrillation, Normal Sinus Rhythm", 
+     "Tachycardia is characterized by a rapid heart rate, unlike bradycardia.");
+
+-- Query data to verify it has been added
+SELECT * FROM ekg_conditions;
